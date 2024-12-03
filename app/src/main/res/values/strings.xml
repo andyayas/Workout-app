@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WorkoutApp</string>
+    <string name="default_web_client_id">368403807296-eqbsl2jtkli37djdujv7p10seiu4rhrj.apps.googleusercontent.com</string>
+    <string name="title_activity_homepage">activity_homepage</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
