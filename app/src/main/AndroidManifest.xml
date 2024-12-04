@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutApp"
         tools:targetApi="31">
-        <activity android:name=".HomepageActivity" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SurveyActivity"/>
+        <activity android:name=".ViewModel.HomepageActivity" />
+        <activity android:name=".ViewModel.ForgotPasswordActivity" />
+        <activity android:name=".ViewModel.RegisterActivity" />
+        <activity android:name=".ViewModel.LoginActivity" />
+        <activity android:name=".ViewModel.SurveyActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".View.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.WorkoutApp">

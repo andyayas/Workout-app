@@ -1,4 +1,4 @@
-package com.example.workoutapp
+package com.example.workoutapp.ViewModel
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.workoutapp.R
 
 class SurveyActivity : AppCompatActivity() {
 
@@ -48,7 +49,10 @@ class SurveyActivity : AppCompatActivity() {
                 SurveyAdapter.Question("Height")
             )
             2 -> listOf(
-                SurveyAdapter.Question("Fitness Goals", listOf("Lose Weight", "Build Muscle", "Maintain Fitness")),
+                SurveyAdapter.Question(
+                    "Fitness Goals",
+                    listOf("Lose Weight", "Build Muscle", "Maintain Fitness")
+                ),
                 SurveyAdapter.Question(
                     "Preferred Workout Types",
                     listOf("Cardio", "Strength Training", "Bodybuilding", "HIIT")

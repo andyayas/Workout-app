@@ -1,4 +1,4 @@
-package com.example.workoutapp
+package com.example.workoutapp.ViewModel
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import android.widget.ImageButton
+import com.example.workoutapp.R
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 

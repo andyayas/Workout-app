@@ -1,9 +1,13 @@
-package com.example.workoutapp
+package com.example.workoutapp.View
 
 import android.os.Bundle
 import android.content.Intent
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.workoutapp.R
+import com.example.workoutapp.ViewModel.HomepageActivity
+import com.example.workoutapp.ViewModel.LoginActivity
+import com.example.workoutapp.ViewModel.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {

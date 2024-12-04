@@ -1,4 +1,4 @@
-package com.example.workoutapp
+package com.example.workoutapp.ViewModel
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.workoutapp.R
 
 class SurveyAdapter(
     private val questions: List<Question>,

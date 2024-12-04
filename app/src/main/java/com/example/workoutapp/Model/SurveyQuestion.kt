@@ -1,4 +1,4 @@
-package com.example.workoutapp
+package com.example.workoutapp.Model
 
 data class SurveyQuestion(
     val question: String,

@@ -1,14 +1,12 @@
-package com.example.workoutapp
+package com.example.workoutapp.ViewModel
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.workoutapp.R
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class HomepageActivity : AppCompatActivity() {
     private lateinit var logoutButton: Button
