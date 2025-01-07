@@ -1,46 +1,71 @@
 package com.example.workoutapp.ViewModel
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import com.example.workoutapp.HomeScreenActivity
 import com.example.workoutapp.R
-import com.google.firebase.auth.FirebaseAuth
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomepageActivity : AppCompatActivity() {
-    private lateinit var logoutButton: Button
-    private lateinit var auth: FirebaseAuth
-
-    private lateinit var welcomeTextView: TextView // New
-    private lateinit var fitnessInfoTextView: TextView // New
+    lateinit var toolbar: ActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
 
-        auth = FirebaseAuth.getInstance()
-        logoutButton = findViewById(R.id.button3)
-        welcomeTextView = findViewById(R.id.welcomeTextView) // Update with your TextView ID
-        fitnessInfoTextView = findViewById(R.id.fitnessInfoTextView) // Update with your TextView ID
+        // Initialize the BottomNavigationView and Toolbar
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation)
+        val myToolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(myToolbar)
+        toolbar = supportActionBar!!
 
-        logoutButton.setOnClickListener {
-            logOut()
-        }
+        // Initial fragment for HomePage
+        toolbar.title = "Home Page"
+        val homeFragment = HomeScreenActivity.newInstance()
+        openFragment(homeFragment)
 
-        // Fetch and display survey data
+        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
-    private fun logOut() {
-        // Sign out the user
-        auth.signOut()
-
-        // Navigate back to the login screen
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
+    // Bottom Navigation item selection listener
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.nav_home -> {
+                toolbar.title = "Home Page"
+                val homeFragment = HomeScreenActivity.newInstance()
+                openFragment(homeFragment)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_workout -> {
+                toolbar.title = "Workouts"
+                val workoutFragment = WorkoutActivity.newInstance()
+                openFragment(workoutFragment)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_history -> {
+                toolbar.title = "History"
+                val historyFragment = HistoryActivity.newInstance()
+                openFragment(historyFragment)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_profile -> {
+                toolbar.title = "Profile"
+                val profileFragment = ProfileActivity.newInstance()
+                openFragment(profileFragment)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
     }
 
-
-        }
+    // Method for fragment transactions
+    private fun openFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.content1, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+}

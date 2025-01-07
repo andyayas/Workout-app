@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3D3D3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="55dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#060F2E"
+            android:textStyle="bold"
+            />
+
+        <!-- First Name -->
+        <EditText
+            android:id="@+id/firstNameEditText"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:hint="First Name"
+            android:inputType="textPersonName" />
+
+        <!-- Last Name -->
+        <EditText
+            android:id="@+id/lastNameEditText"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:hint="Last Name"
+            android:inputType="textPersonName" />
+
+        <!-- Age -->
+        <EditText
+            android:id="@+id/ageEditText"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:hint="Age"
+            android:inputType="number" />
+
+        <!-- Weight -->
+        <EditText
+            android:id="@+id/weightEditText"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:hint="Weight (kg)"
+            android:inputType="numberDecimal" />
+
+        <!-- Height -->
+        <EditText
+            android:id="@+id/heightEditText"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:hint="Height (cm)"
+            android:inputType="numberDecimal" />
+
+        <!-- Fitness Goals -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:text="Select Fitness Goal"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/goalsSpinner"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular" />
+
+        <!-- Workout Types -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:text="Select Workout Type"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/typesSpinner"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular" />
+
+        <!-- Duration -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:text="Select Workout Duration (minutes)"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/durationSpinner"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular" />
+
+        <!-- Frequency -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:text="Select Workout Frequency (days per week)"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/frequencySpinner"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/buttonshape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="150dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Save"
+            android:textColor="#FF8C00" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

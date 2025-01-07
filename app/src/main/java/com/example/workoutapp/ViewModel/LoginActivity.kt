@@ -72,6 +72,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupFirebaseAuth() {
         auth = FirebaseAuth.getInstance()
+        if (auth.currentUser != null) {
+            startHomeScreenActivity()
+        }
     }
 
     private fun setupGoogleSignIn() {

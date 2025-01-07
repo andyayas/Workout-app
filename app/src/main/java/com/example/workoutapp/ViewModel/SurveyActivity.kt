@@ -2,17 +2,20 @@ package com.example.workoutapp.ViewModel
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workoutapp.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SurveyActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var submitButton: Button
-    private var answers = mutableMapOf<Int, String>()
+    private var answers = mutableMapOf<String, String>()
 
     private var currentStage = 1
 
@@ -27,13 +30,10 @@ class SurveyActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
             if (currentStage == 1) {
-                // Move to the next stage
                 currentStage = 2
                 setupSurvey(currentStage)
             } else {
-                // Save or submit data here
                 saveAnswers()
-                // Redirect or finish
                 navigateToHomeScreen()
             }
         }
@@ -49,29 +49,20 @@ class SurveyActivity : AppCompatActivity() {
                 SurveyAdapter.Question("Height")
             )
             2 -> listOf(
-                SurveyAdapter.Question(
-                    "Fitness Goals",
-                    listOf("Lose Weight", "Build Muscle", "Maintain Fitness")
-                ),
-                SurveyAdapter.Question(
-                    "Preferred Workout Types",
-                    listOf("Cardio", "Strength Training", "Bodybuilding", "HIIT")
-                ),
-                SurveyAdapter.Question(
-                    "Workout Duration",
-                    listOf("15-30 mins", "30-45 mins", "45-60 mins")
-                ),
-                SurveyAdapter.Question(
-                    "Workout Frequency",
-                    listOf("2 times a week", "3 times a week", "4 times a week", "5+ times a week")
-                )
+                SurveyAdapter.Question("Fitness Goals", listOf("Lose Weight", "Build Muscle", "Maintain Fitness")),
+                SurveyAdapter.Question("Preferred Workout Types", listOf("Cardio", "Strength Training", "Bodybuilding", "HIIT")),
+                SurveyAdapter.Question("Workout Duration", listOf("15-30 mins", "30-45 mins", "45-60 mins")),
+                SurveyAdapter.Question("Workout Frequency", listOf("2 times a week", "3 times a week", "4 times a week", "5+ times a week"))
             )
             else -> emptyList()
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = SurveyAdapter(questions) { position, answer ->
-            answers[position] = answer
+            val questionText = questions[position].text
+            answers[questionText] = answer
+
+            Log.d("SurveyActivity", "Answer for '$questionText': $answer")
         }
     }
 
@@ -82,6 +73,21 @@ class SurveyActivity : AppCompatActivity() {
     }
 
     private fun saveAnswers() {
-        // Save answers to RoomDB or send to backend
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId != null) {
+            val db = FirebaseFirestore.getInstance()
+
+            Log.d("SurveyActivity", "Final Answers: $answers")
+
+            db.collection("users").document(userId).collection("survey")
+                .document("userSurveyData")
+                .set(answers)
+                .addOnSuccessListener {
+                    Log.d("SurveyActivity", "Survey saved successfully.")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("SurveyActivity", "Error saving survey", e)
+                }
+        }
     }
 }

@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -99,5 +100,8 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.5.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
     kapt ("androidx.room:room-compiler:2.5.1")
-
+    implementation ("com.google.firebase:firebase-firestore-ktx:24.6.0")
+    implementation ("com.google.firebase:firebase-auth:21.0.1")
+    implementation ("com.google.android.gms:play-services-auth:20.4.1")
+    implementation ("androidx.fragment:fragment-ktx:1.6.1")
 }
